@@ -12,6 +12,11 @@ import {
 } from '@angular/core';
 import { renderToElement } from '@plasmicapp/loader-react';
 import { PlasmicService } from './plasmic.service';
+import { createPortal } from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import YooptaEditor, { createYooptaEditor } from '@yoopta/editor';
+import { createElement } from 'react';
+import YooptaWrapper from './dummy'; // adjust the path
 
 @Component({
   selector: 'fxr-plasmic',
@@ -52,21 +57,27 @@ export class PlasmicReactComponent implements AfterViewInit, OnChanges {
   }
 
   private render(): void {
-    if (!this.plasmic.loader || !this.root?.nativeElement) return;
-
-    renderToElement(
-      this.plasmic.loader,
-      this.root.nativeElement,
-      {
-        name: this.component,
-      },
-      {
-        componentProps: this.props,
-        globalVariants: this.plasmic.globalVariants,
-        prefetchedData: this.plasmic.prefetchedData,
-        pageParams: this.plasmic.pageParams,
-        pageQuery: this.plasmic.pageQuery,
-      }
-    );
+    console.log('Rendering Plasmic component:', this.root.nativeElement);
+    const root = createRoot(this.root.nativeElement);
+    const editorReactComponent = createElement(YooptaWrapper);
+    const res = createPortal(editorReactComponent, this.root.nativeElement);
+    root.render(res);
+    console.log('YooptaEditor created:', res);
+    // this.root.nativeElement;
+    // if (!this.plasmic.loader || !this.root?.nativeElement) return;
+    // renderToElement(
+    //   this.plasmic.loader,
+    //   this.root.nativeElement,
+    //   {
+    //     name: this.component,
+    //   },
+    //   {
+    //     componentProps: this.props,
+    //     globalVariants: this.plasmic.globalVariants,
+    //     prefetchedData: this.plasmic.prefetchedData,
+    //     pageParams: this.plasmic.pageParams,
+    //     pageQuery: this.plasmic.pageQuery,
+    //   }
+    // );
   }
 }

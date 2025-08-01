@@ -1,0 +1,14 @@
+diff --git a/node_modules/@plasmicapp/loader-react/dist/index.js b/node_modules/@plasmicapp/loader-react/dist/index.js
+index 1a11f62..bdcec05 100644
+--- a/node_modules/@plasmicapp/loader-react/dist/index.js
++++ b/node_modules/@plasmicapp/loader-react/dist/index.js
+@@ -1455,7 +1455,8 @@ function renderToElement(_0, _1, _2) {
+   return __async(this, arguments, function* (loader, target, lookup, opts = {}) {
+     return new Promise((resolve) => {
+       const element = makeElement(loader, lookup, opts);
+-      import_react_dom2.default.render(element, target, () => resolve());
++      // import_react_dom2.default.render(element, target, () => resolve());
++      import_react_dom2.default.createRoot(target).render(element);
+     });
+   });
+ }
