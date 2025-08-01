@@ -17,6 +17,9 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@plasmicapp/loader": "^0.0.59",
+    "@plasmicapp/loader-react": "^1.0.394",
+    "@plasmicapp/react-web": "^0.2.394",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
